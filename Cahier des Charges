@@ -1,1 +1,5 @@
 **Cahier des Charges**
+*But du Projet*
+Le but de ce projet est de faciliter le travail des postiers en triant les lettres par département à l'aide d'un programme informatique. Les postiers n'aurons plus qu'à trier les lettres par villes.
+*Description du Programme*
+Nous voulons créer un programme permettant de reconnaître les chiffres manuscrits afin de les retransmettre à l'écran de l'ordinateur.
