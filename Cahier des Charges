@@ -11,7 +11,7 @@ Nous nous intéressons beaucoup à tout ce qui est du domaine des nouvelles tech
 * Axel
 
  Au départ, on pensait faire un logiciel de jeu vidéo pour ce projet. Mais en fait c'est un projet qui tient à cœur à plusieurs groupes, il est donc difficile d'être original. On aurait volontier opté pour la réalité virtuelle mais c'est un projet bien trop ambitieux et au-delà de nos compétences de cette année. 
-Après avoir lu un article sur l'intelligence artificielle https://parlement-et-citoyens.fr/blog/lancement-d-une-consultation-publique-sur-l-intelligence-artificielle-par-cedric-villani-participez-jusqu-au-6-janvier
+Après avoir lu un article sur l'intelligence artificielle (https://parlement-et-citoyens.fr/blog/lancement-d-une-consultation-publique-sur-l-intelligence-artificielle-par-cedric-villani-participez-jusqu-au-6-janvier),
 On a penser à travailler sur un programme qui pourrait traiter l'écriture manuscrite et la convertir en écriture numérique pour qu'un robot puisse la lire. On a pensé s'atteler aux chiffres qui ne sont qu'au nombre de dix et dont l'utilisation pratique pourrait s'appliquer au traitement du courrier avec la lecture des codes postaux.
 Dans un premier temps nous avons dû récolter un échantillonnage de chiffres pour apprendre à notre logiciel à reconnaître et associer une écriture manuscrite avec un chiffre numérique.
 
