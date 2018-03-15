@@ -1,0 +1,159 @@
+TS – Lycée de la Côtière
+Présentation du projet de fin d’année ISN
+
+1) L’évaluation
+La note d’ISN au baccalauréat est donnée par une commission constituée du professeur (Mme MARIE) et d’un autre enseignant.
+L’évaluation orale individuelle d’une durée de 20 minutes se déroulera en deux temps :
+
+
+• Première partie :
+
+Le candidat effectue une présentation orale de son projet, d’une durée maximale de 8 minutes, pendant laquelle il n’est pas interrompu. Il s’appuie pour cela sur un dossier-projet de 5 à 10 pages, hors annexes, élaboré à l’aide de l’outil informatique.
+Ce projet est structuré de façon à mettre en évidence :
+– le but visé et les moyens choisis pour atteindre ce but ;
+– la démarche de projet qui a conduit au résultat tel que présenté ;
+– la dimension collaborative du projet liée au travail en équipe (2 à 3 élèves).
+La note de zéro est attribuée à tout candidat ne présentant pas un dossier-projet conforme à la définition ci-dessus .
+Un dossier-projet est considéré non conforme s’il n’est pas personnel ou n’est pas réalisé avec l’outil informatique, ou comportemoins de 5 pages, hors annexes.
+
+
+• Deuxième partie :
+
+La commission interroge le candidat sur différents aspects de son projet et sur son lien avec les compétences fixées par le programme, puis élargit ce questionnement aux autres compétences spécifiées dans le programme.
+
+ 
+2) Le cahier des charges du projet
+Vous allez conduire votre projet par équipe de 3 ou 2.
+Vous devez réaliser une application informatique à l’aide de scripts écrits en Python. L’application doit être exécutable sur tout type de plateforme (Mac-OS, Linux, Windows). Elle peut s’accompagner d’extensions (documents de présentation . . . ), peut aussi comporter des pages web en HTML/CSS. Cependant les programmes en Python doivent représenter le coeur du projet.
+Les fichiers sources des codes Python pourront être demandés par le professeur pendant la phase de développement.
+Ils devront respecter les conditions suivantes :
+• être encodés en UTF-8
+• être bien documentés
+• présenter un découpage du code en fonctions ou modules facilitant sa lisibilité et sa maintenance
+
+Votre dossier-projet devra aborder les thèmes suivants :
+• le but poursuivi et les motivations,
+• le synopsis du projet,
+• algorithmique du code :
+– structures de données utilisées
+– architecture de l’application : programme principal, découpage en fonctions ou en modules . . .
+– description d’un ou plusieurs scénarios possibles d’exécution
+• présentation des outils ou techniques adoptées et raisons de ces choix : types de données Python particuliers (listes, dictionnaires, . . . ), bibliothèques Python externes (PIL, Tkinter, Pygame), programmation objet ou architectureModèle Vue Contrôleur (pour les pages web dynamiques) . . .
+• les difficultés rencontrées : techniques (bugs), organisation du travail
+• le déroulement du projet : répartition du travail, planning, échanges au sein du groupe
+• analyse de la réalisation et prolongements possibles
+
+Votre dossier-projet devra respecter les conditions de mise en forme suivantes :
+• Il doit comporter au minimum 10 pages hors-Annexes en police de taille 10 point avec interligne simple. Evitez d’excéder 15 pages.
+• Les codes sources, images etc . . . sont considérés comme des Annexes.
+• Des jeux de tests (avec éventuellement des captures d’écran) doivent être fournis en Annexes pour chaque composant essentiel de l’application.
+• Il doit être réalisé à l’aide de l’outil informatique dans des formats de fichiers ouverts (pas de documentWord).
+• Il doit être remis sous formats papier et numérique dans les délais (au moins une semaine avant l’évaluation) aux membres du jury.
+ 
+3) Quelques règles pour réussir son projet
+Source : ISN Activités numériques de programmation en Python de Frédéric Laroche chez Ellipse.
+• Règle n°1 : Je comprends ce que fait mon programme et je suis capable de le refaire.
+Il faut choisir un projet à sa portée sur les plans techniques et algorithmiques.
+Lors de l’examen final la commission évaluera la compétence C1 « Concevoir et réaliser une solution informatique en réponse à un problème » et la compétence C2 « Décrire et expliquer une situation, un système ou un programme ».
+
+• Règle n°2 : Je choisis un projet simple mais pouvant se développer ultérieurement.
+En l’informatique les projets marquants ne sont pas figés, leur code doit être suffisamment documenté et modulable pour permettre des développements futurs éventuellement par d’autres personnes que les initiateurs du projet.
+Pour faciliter la diffusion des savoirs, il faut développer votre projet dans l’esprit des logiciels libres. 
+
+• Règle n°3 : J’évite les problèmes techniques difficiles à maîtriser et j’essaie d’envisager la situation dans sa généralité.
+Avant de coder, il faut passer par l’étape papier + crayon et réaliser un synopsis du projet : cas d’utilisations, actions réalisées, modèle de structures de données (types de données Python, fichiers . . . ), algorithmique (boucles, fonctions ). Ainsi on peut valider les différentes étapes au cours de l’avancement du projet et disposer toujours d’une vue de ce qu’il reste à réaliser.
+Notre but est l’apprentissage de la programmation, l’utilisation de bibliothèques externes (PIL, Pygame . . . ) ou de techniques de programmation sophistiquée (programmation objet) doit être justifiée.
+Pour toute fonction de bibliothèque qu’on utilise, on doit être capable de donner les paramètres d’entrée, l’action réalisée, les paramètres de sortie et un exemple d’utilisation contextualisée.
+
+• Règle n°4 : Je ne perds jamais de vuemes objectifs et je ne travaille pas seul..
+Lorsque le synopsis du projet est prêt, on peut remplir une fiche de suivi comme celles proposée en Annexes 1 et 2 avec le cahier des charges, le planning et la répartition des tâches.
+De plus il est recommandé de tenir à jour « un cahier de suivi » (sous format papier ou numérique) en y incorporant des fiches d’état du projet comme celle proposée en Annexe 3.
+Il faut aussi mettre en place un espace de partage électronique de documents (type Dropbox . . . ) pour faciliter l’échange d’informations au sein du groupe.
+Enfin il est nécessaire de faire le point régulièrement avec le professeur.
+
+ 
+4) Quelques idées de projet
+La plupart des propositions sont tirées du manuel Informatique Et Sciences du Numérique de Gilles Dowek aux éditions Ellipse.
+
+• Un générateur d’exercices de calcul mental
+Programmer un générateur d’exercices de calcul mental : le programme choisit aléatoirement une opération et deux nombres, et vérifie la réponse de l’utilisateur. On peut ensuite poser une série de questions et compter le score total. On pourra enfin prévoir plusieurs niveaux de difficulté selon les opérations proposées ou la taille des nombres à calculer, et laisser l’utilisateur choisir son niveau de difficulté ou attribuer des scores variables aux réponses.
+
+• Le jeu de la vie
+Sur un damier carré, on dispose des créatures de manière aléatoire. La population évolue d’un état au suivant selon les règles suivantes :
+– une créature survit si elle a 2 ou 3 voisines dans les 8 cases adjacentes et elle meurt à cause de son isolement ou de la surpopulation sinon,
+– une créature naît dans une case vide s’il y a exactement 3 créatures dans les 8 cases voisines, et rien ne se passe dans cette case sinon.
+Écrire avec la bibliothèque Tkinter de Python un programme qui simule le développement d’une population.
+
+• Générateur d’oeuvres aléatoires
+Trouver, sur le site web d’un musée, des tableaux. Choisir aléatoirement un petit détail d’un de ces tableaux et agrandir ce détail en un nouveau tableau. Changer les couleurs, le contraste, mélanger des détails issus de deux tableaux différents, etc . . .Vérifier la licence de ces images et comprendre s’il est possible de publier ses résultats ou non.
+
+• Qui est-ce ?
+Créer une version numérique et graphique du jeu de société « Qui est-ce ? ». Quelle est l’utilité de la notion de dichotomie pour jouer à ce jeu ?
+
+• Tours de Hanoi
+On considère trois tiges nommées A, B et C de gauche à droite.
+Au début du jeu, n anneaux de diamètres distincts sont empilés sur la tige la plus à gauche A par ordre croissant des diamètres de bas en haut de la tige.
+Le but du jeu est de déplacer les n anneaux de la tige A vers le tige la plus à droite A en un nombre minimal de déplacements et en respectant les règles suivantes :
+– on ne peut déplacer qu’un disque à la fois ;
+– on ne peut pas poser un disque plus grand sur un disque plus petit.
+– on peut utiliser les trois tiges pendant le jeu.
+Ecrire un programme qui résout le problème en affichant les déplacements successifs effectués.
+Réaliser ensuite une interface graphique qui permet à l’utilisateur de jouer et qui affiche la solution optimale.
+
+• Jeu de Tic-Tac-Toe
+Le Tic-Tac-Toe est un jeu où deux joueurs placent à tour de rôle l’un des ronds O et l’autre des croix X sur un plateau de trois cases sur trois cases, jusqu’à ce que l’un des joueurs ait aligné trois symboles ou que les neuf cases soient remplies. C’est le joueur O qui commence. Décrire ce jeu sous forme d’un diagramme d’états-transitions (faire une recherche documentaire sur cette notion). Combien y a-t-il d’états possibles ? Un état du jeu peut être gagnant pour O, gagnant pour X, match nul ou en cours de jeu. Exprimer chacun des états à l’aide d ?un nombre entier. Construire un tableau qui pour chacun de ces états indique s’il est gagnant pour l’un des joueurs, nul ou en cours de jeu et, dans ce cas, les transitions possibles pour chacun des joueurs. Calculer ensuite, de proche en proche, les états dans lesquels
+– le joueur O est certain de gagner,
+– le joueur X est certain de gagner,
+– le joueur O est certain de gagner ou de faire match nul,
+– le joueur X est certain de gagner ou de faire match nul.
+Écrire un programme qui joue contre un joueur humain.
+
+• Algorithmes de Dijskstraa et de Floyd-Marshall
+Faire une recherche documentaire sur ces algorithmes de recherche de plsu court chemin dans un graphe puis les programmer avec une structure de données appropriée
+
+• Algorithme de sortie d’un labyrinthe
+Faire une recherche sur l’algorithme de Pledge sur le site Interstices :
+https://interstices.info/jcms/c_46065/l-algorithme-de-pledge
+Programmer cet algorithme.
+
+• Déchiffrer automatiquement unmessage codé selon la méthode de César.
+Écrire un programme qui déchiffre automatiquement un message codé selon la méthode de César sans connaître la valeur du décalage a priori. Rechercher ce qu’est le chiffre de Vigenère, et écrire un programme qui code un message selon ce principe. Rechercher une méthode pour décoder un message codé selon ce principe sans connaître la clé utilisée, et écrire un programme qui effectue ce décodage.
+
+• Daltonisme.
+Rechercher sur le Web ce qu’est le daltonisme et quelles en sont les différentes formes. Écrire un programme qui lit une image dans un fichier au format PPM et l’affiche à l’écran comme la verrait une personne atteinte de chacune des formes de daltonisme.
+
+• Correcteur orthographique
+Réaliser un correcteur orthographique.Un tel programme prend en entrée un fichier texte, le découpe en mots, cherche chaque mot dans un dictionnaire et donne la liste des mots qui ne sont pas dans le dictionnaire.
+
+• Bataille navale
+Écrire un programme de bataille navale avec plusieurs bateaux. On pourra utiliser la bibliothèque Tkinter pour Python.
+
+• Jeu de Pong
+Écrire une version Python du jeu Pong. On pourra utiliser la bibliothèque Tkinter pour Python.
+
+• Mastermind
+Écrire un programme qui lit deux tableaux de quatre éléments au clavier et indique le nombre d’éléments en commun dans ces deux tableaux. Écrire un programme qui joue auMastermind : tire au hasard la la combinaison secrète et répond aux propositions de l’autre joueur.
+
+• Jeu de pendu
+Réaliser une version du jeu de Pendu avec interface graphique où le joueur joue contre l’ordinateur.
+
+• Un agenda électronique
+Réaliser une application qui peut afficher un calendrier mensuel et qui permet d’associer à un jour une ou plusieurs tâches, de lister les tâches associées à un jour …
+On pourra utiliser la bibliothèque Tkinter pour l’interface graphique et des fichiers textes pour le stockage des tâches.
+
+• Une application pour le journal du lycée (ou pour le ciné club)
+Réaliser une application qui permet de gérer les articles du journal du lycée :
+– enregistrement d’articles selon auteur, catégorie, date de publication
+– recherche par critères dans la base de données ou les fichiers textes où sont stockées les données…
+
+
+ 
+5) Quelques bibliothèques de Python qui pourraient vous être utilies
+• réalisation d’interfaces graphiques : tkinter (sous Python 3) ou Tkinter (Python2) :
+http://infohost.nmt.edu/tcc/help/pubs/tkinter/web/index.html
+• Traitement d’images : PIL ou son fork Pillow : https://pypi.python.org/pypi/Pillow/
+• réalisation de jeux : pygame : http://pygame.org/news.html
+• réalisation de pages web dynamiques :
+– Django (Python2 uniquement) : http://www.django-fr.org/
+– CherryPython : http://www.cherrypy.org/
+
