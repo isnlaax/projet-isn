@@ -1,0 +1,34 @@
+But : Transformer l’écriture manuscrite en écriture numérique
+
+
+Prendre un cadre avec une dimension précise,
+Faire la différence entre les pixels noirs et les pixels blancs
+Définir une lettre et l’afficher
+
+1.	Préanalyse de l'image : le but est d'améliorer éventuellement la qualité de l'image. Ceci peut inclure le redressement d'images inclinées ou déformées, des corrections de contraste, le passage en mode bicolore (noir et blanc, ou plutôt papier et encre), la détection de contours.
+2.	Segmentation en lignes et en caractères (ou Analyse de page) : vise à isoler dans l'image les lignes de texte et les caractères à l'intérieur des lignes. Cette phase peut aussi détecter le texte souligné, les cadres, les images.
+3.	Reconnaissance proprement dite des caractères : après normalisation (échelle, inclinaison), une instance à reconnaitre est comparée à une bibliothèque de formes connues, et on retient pour l'étape suivante la forme la plus « proche » (ou les N formes les plus proches), selon une distance ou une vraisemblance (likelihood). Les techniques de reconnaissance se classent en quelques grands types1: 
+1.	Classification par Caractéristiques (Features) : une forme à reconnaître est représentée par un vecteur de valeurs numériques - appelées features en anglais - calculées à partir de cette forme. Le nombre de features est de l'ordre de 100 à 300. Si les features sont bien choisies, une classe de caractères (par exemple l'ensemble des A majuscules) sera représentée par un « nuage » contigu de points dans l'espace vectoriel des features. Le rôle du classificateur est de déterminer à quel nuage (donc à quelle classe de caractères) la forme à reconnaitre appartient le plus vraisemblablement. La classification fait généralement appel à divers types de réseaux de neurones artificiels entrainés sur de vastes bases de formes possibles.
+2.	Méthodes métriques : consistent à comparer directement la forme à reconnaître, au moyen d'algorithmes de distance, avec un ensemble de modèles appris. Ce type de méthode est peu utilisé et peu valorisé par les chercheurs, car souvent plus naïf et vraisemblablement moins efficace que les méthodes à base de features.
+3.	Méthodes statistiques : dans le domaine de la reconnaissance d'écriture manuscrite, il est fréquemment fait appel aux méthodes probabilistes/statistiques comme les chaînes de Markov.
+4.	Post-traitement utilisant des méthodes linguistiques et contextuelles pour réduire le nombre d'erreurs de reconnaissance : systèmes à base de règles, ou méthodes statistiques basées sur des dictionnaires de mots, de syllabes, de N-grammes (séquences de caractères ou de mots). Dans les systèmes industriels, des techniques spécialisées pour certaines zones de texte (noms, adresses postales) peuvent utiliser des bases de données pour éliminer les solutions incorrectes.
+5.	Génération du format de sortie, avec la mise en page pour les meilleurs systèmes.
+
+
+
+
+
+
+
+Besoins :
+_ obtenir notre texte papier en texte informatique
+_ 
+
+
+
+Contraintes :
+_ déchiffrer toutes les sortes d’écritures manuscrites
+
+
+
+Résultats
