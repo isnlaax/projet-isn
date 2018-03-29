@@ -1,0 +1,13 @@
+  Caractéristiques de l'image :
+    -Résolution de l'image
+    Résolutions disponibles : 
+        256x256, Cette résolution est trop grande pour simplement y inscrire un chiffre.
+        128x128, Cette résolution pourrait être compatible avec notre demande.
+        64x64, Cette résolution pourrait être compatible avec notre demande.
+Conclusion : Notre choix c’est porté sur...
+    -Quantification de l'image :
+        Nous avons décidé d’utiliser un seul bit puisque nous voulons acquérir une image faite de noir et de blanc.
+    -Codage de la couleur :
+        Nous nous sommes mis d’accord sur l’utilisation du binaire pour la couleur des pixels. Le pixel sera soit : 
+            - Noir, I (i,j) = 0 		( i et j = coordonnées du pixel)
+            - Blanc, I (i,j) = 1
