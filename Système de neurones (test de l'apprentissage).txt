@@ -1,0 +1,75 @@
+// ce programme est un programme pour tester les connaissances apprise sur les système de neuronnes
+// son but est de reconnaître la configuration d'une image réduite à 4 carrés(ou pixels) soit blanc soit noir
+// la configuration sera donné dans un tableau de 2 valeurs en prenant par convention 1 pour les cases noires, et 0 pour les blanches
+// 00 pour toutes les cases sont noires ou toutes blanches, 01 pour une case est noire, 10 pour deux cases sont noires, 11 pour trois cases sont noires
+
+
+
+
+
+// par convention, Input est la couche d'entrée, Hidden la couche cachée et Output la couche de sortie
+// se sont les trois couches de neurones sous forme de tableaux
+var Input = [] ;
+var Hidden = [] ;
+var Output = [] ;
+
+// Wh et Wo sont les tableaux de stockage
+var Wh = [] ;
+var Wo = [] ;
+
+// on crée la fonction pour initialisé les valeurs des tableaux
+// par convention, nous l'appellerons "reset"
+function reset () {
+	Input = [0, 0, 0, 0] ;
+	Hidden = [0, 0, 0, 0] ;
+	Output = [0, 0]
+	
+	// tableau à double indice, le premier étant celui des neurones de la couche cachée, le deuxième celui des neurones de la couche d'entrée
+	// les poids son pris arbitrairement à 0.5
+	Wh = [[0.5, 0.5, 0.5, 0.5],
+		[0.5, 0.5, 0.5, 0.5],
+		[0.5, 0.5, 0.5, 0.5],
+		[0.5, 0.5, 0.5, 0.5]];
+	
+	// le premier indice est celui de la couche de sortie et le deuximèe est celui de la couche cachée
+	// comme il n'y a que deux sorties, le nombre de poids se résume dans 2 tableaux
+	// les poids son pris arbitrairement à 0.5
+	Wo = [[0.5, 0.5, 0.5, 0.5],
+		[0.5, 0.5, 0.5, 0.5]];
+	}
+
+// donnée présenté au réseau
+// les valeurs de ce tableau sont choisis arbitrairement
+var input_data = [0, 1, 0, 1] ;
+
+
+// fonction qui sert à propager (propagate()) les données de la couche d'entrée à la couche de sortie
+function sigmoid (x) {
+	return 1 9 (1 + Math.pow(Math.E, (-1 * x)));
+	// Math.pow et Math.E étant des fonction, l'une de puissance et l'autre de constante, prise dans une librairie mathématique de Javascript
+	}
+	
+// elle copie dans un premier temps les données stockées dans un tableau d passé en arguments de la couche d'entrée
+for (var i = 0; i < Input.length; i++) {
+	Input [i] = d[i]
+	}
+
+// Soit i pour la couche d'entrée, j pour la couche cachée, et k pour la couche de sortie 
+// pour passé de la couche d'entrée à celle caché, il nous faut passé par deux étapes
+
+// la première étape consiste à calculer les sommes pondérées
+// nous utiliserons donc un tableau de variables pour stocker les résultats cumulatifs des sommes
+// nous appellerons donc ce tableau Xh
+Xh = [0, 0, 0, 0];
+
+
+ 
+
+
+
+
+for (var j = 0; j < B.length; j++) {
+	for (var i = 0; i < A.length; i++) {
+		// calcul sur le lien w[j] [i]
+		}
+	}
