@@ -1,4 +1,5 @@
 // ce programme est un programme pour tester les connaissances apprise sur les système de neuronnes
+// il est fait pour un fonctionnement en Javascript
 // son but est de reconnaître la configuration d'une image réduite à 4 carrés(ou pixels) soit blanc soit noir
 // la configuration sera donné dans un tableau de 2 valeurs en prenant par convention 1 pour les cases noires, et 0 pour les blanches
 // 00 pour toutes les cases sont noires ou toutes blanches, 01 pour une case est noire, 10 pour deux cases sont noires, 11 pour trois cases sont noires
