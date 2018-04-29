@@ -121,7 +121,55 @@ var Target = [0, 0];
 // 3_ le calcul des gradients d'erreurs pour corriger les poids synaptiques de la couche cachée
 // 4_ la mise-à-jour des poids synaptiques de la couche de sortie et de la couche cachée
 
-function learn()
+function learn() {
+
+    // première étape:
+    // soit Err le tableau pour sotcker le résultat
+    var Err = []
+
+    for (var k = 0; k < Output.length; k++) {
+        Err[k] = Target[k] - Output[k];
+    }
+
+    // deuxième étape:
+    // soit Wog le tableau pour stocker les gradients d'erreurs
+    var Wog = [[0, 0, 0, 0], [0, 0, 0, 0]];
+
+    for (var k = 0; k < Output.length; k++) {
+        for (var k = 0; k < Hidden.length; j++) {
+            Wog[k][j] = -Err[k] * Output[k] * (1 - Output[k]) * Hidden[j]
+        }
+    }
+
+    // troisième étape
+    // soit e une variable  qui cumule les erreurs
+    // soit Whg le tableau pour stocker les gradients d'erreurs
+    var Whg = [[0, 0, 0, 0], [0, 0, 0, 0],
+    [0, 0, 0, 0], [0, 0, 0, 0]];
+
+    for (var j = 0; j < Hidden.length; j++) {
+        for (var i = 0; i < Hidden.length; i++) {
+            var e = 0
+            for (var k = 0; k < Output.length; k++) {
+                e += Wo[k][j] * Err[k];
+                Whg[j][i] = -e * Hidden[j] * (1 - Hidden[j]) * Input[i];
+            }
+        }
+    }
+
+    // quatrième partie:
+    for (var k = 0; k < Output.length; k++) {
+        for (var j = 0; j < Hidden.length; j++) {
+            Wo[k][j] -= alpha * Wog[k][j]
+        }
+    }
+
+    for (var j = 0; j < Hidden.length; j++) {
+        for (var i = 0; i < Input.length; i++) {
+            Wh[j][i] -= alpha * Whg[j][i]
+        }
+    }
+}
 
 
 
