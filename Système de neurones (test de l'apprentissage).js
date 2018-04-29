@@ -50,10 +50,10 @@ function reset() {
 
 function propagate() {
     // récupération des donées de saisies
-    Input[0] = parseInt(document.getElementById(‘input0’).value);
-    Input[1] = parseInt(document.getElementById(‘input1’).value);
-    Input[2] = parseInt(document.getElementById(‘input2’).value);
-    Input[3] = parseInt(document.getElementById(‘input3’).value);
+    Input[0] = parseInt(document.getElementById('input0').value);
+    Input[1] = parseInt(document.getElementById('input1').value);
+    Input[2] = parseInt(document.getElementById('input2').value);
+    Input[3] = parseInt(document.getElementById('input3').value);
 
     for (var i = 0; i < Input.length; i++) {
         Input[i] = d[i]
@@ -104,7 +104,9 @@ function propagate() {
 // fonction pour visualiser les valeurs
 function display() {
     document.getElementById('out0').innerHTML = Output[0];
+    document.getElementById('Err0').innerHTML = Target[0] - Output[0];
     document.getElementById('out1').innerHTML = Output[1]
+    document.getElementById('Err1').innerHTML = Target[1] - Output[1];
 }
 
 
@@ -121,8 +123,8 @@ var Target = [0, 0];
 // 4_ la mise-à-jour des poids synaptiques de la couche de sortie et de la couche cachée
 
 function learn() {
-    Target[0] = parseInt(document.getElementById(‘target0’).value);
-    Target[1] = parseInt(document.getElementById(‘target1’).value);
+    Target[0] = parseInt(document.getElementById('target0').value);
+    Target[1] = parseInt(document.getElementById('target1').value);
 
     // première étape:
 
