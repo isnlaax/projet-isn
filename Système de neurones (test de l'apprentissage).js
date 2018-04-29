@@ -39,11 +39,6 @@ function reset() {
     [0.5, 0.5, 0.5, 0.5]];
 }
 
-// donnée présenté au réseau
-// les valeurs de ce tableau sont choisis arbitrairement
-var input_data = [0, 1, 0, 1];
-
-
 // création de la fonction qui sert à propager (propagate()) les données de la couche d'entrée à la couche de sortie
 
     // fonction d'activation sigmoïde pour calculer la valeur de sortie d'un neurone
@@ -53,9 +48,13 @@ var input_data = [0, 1, 0, 1];
     }
 
 
-function propagate(d) {
+function propagate() {
+    // récupération des donées de saisies
+    Input[0] = parseInt(document.getElementById(‘input0’).value);
+    Input[1] = parseInt(document.getElementById(‘input1’).value);
+    Input[2] = parseInt(document.getElementById(‘input2’).value);
+    Input[3] = parseInt(document.getElementById(‘input3’).value);
 
-    // elle copie dans un premier temps les données stockées dans un tableau d passé en arguments de la couche d'entrée
     for (var i = 0; i < Input.length; i++) {
         Input[i] = d[i]
     }
@@ -66,7 +65,7 @@ function propagate(d) {
     // la première étape consiste à calculer les sommes pondérées
     // nous utiliserons donc un tableau de variables pour stocker les résultats cumulatifs des sommes
     // nous appellerons donc ce tableau Xh
-    Xh = [0, 0, 0, 0];
+    var Xh = [0, 0, 0, 0];
 
     // nous allons donc calculer la somme pondérée de la valeur de chaque neurone d'entrée Input multiplié par le poids syaptique
     for (var j = 0; j < Hidden.length; j++) {
@@ -122,10 +121,10 @@ var Target = [0, 0];
 // 4_ la mise-à-jour des poids synaptiques de la couche de sortie et de la couche cachée
 
 function learn() {
+    Target[0] = parseInt(document.getElementById(‘target0’).value);
+    Target[1] = parseInt(document.getElementById(‘target1’).value);
 
     // première étape:
-    // soit Err le tableau pour sotcker le résultat
-    var Err = []
 
     for (var k = 0; k < Output.length; k++) {
         Err[k] = Target[k] - Output[k];
