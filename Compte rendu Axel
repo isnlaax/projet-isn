@@ -1,0 +1,5 @@
+# Le réseau de neurones
+
+Un réseau de neurone est composé de plusieurs couches reliées entre elles
+_ une couche d'entrée, là où le réseau reçoit les informations utiles pour la suite de son fonctionnement
+_ une ou plusieurs couches cachées, c'est une partie non visible par l'utisateur, dans cette partie
