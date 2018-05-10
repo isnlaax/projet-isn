@@ -1,0 +1,87 @@
+Initialisation :
+-	« namespace MnistViewer»  nom du programme
+-	« pixelFile » = document où ce trouve les images au format 28x28 pixels
+-	« labelFile » = document qui contient les libellés des images
+
+Interface :
+-	Bouton « image suivante »
+_ Utilisation du bouton 2 « private void button2_Click(object sender, EventArgs e) »
+_ « if (images == null)
+        		    {
+              		  LoadImages();
+            } »
+Si les images n’ont pas été chargées en mémoire, alors le programme les charge. Cela évite de lire le fichier à chaque demande et permet d’accéder aux images directement depuis la mémoire de l’ordinateur.
+_ Lire l’image suivante :
+textBox1.Text = (imageIndex + 1).ToString(); // ++next index
+
+-	Créer l’endroit où mettre l’image, « bitmap » :
+
+var bitMap = GetImageBitmap(image);
+       pictureBox1.Image = bitMap;   
+
+-	Afficher l’index et le label dans la « listbox1 » :
+
+  listBox1.Items.Add("Index = " + imageIndex + " Label = " + image._label);
+-	Afficher l’image :
+
+public void LoadImages()
+      		{   
+
+         		   var imagesFileStream = File.OpenRead(pixelFile);
+          var labelsFileStream = File.OpenRead(labelFile);
+Le programme va chercher dans les fichiers toutes les images et les stocker dans un tableau dans la mémoire. 
+Programme :
+-	Fichier binaire
+var imagesReader = new BinaryReader(imagesFileStream);
+       var labelsReader = new BinaryReader(labelsFileStream);
+Convertir les fichiers en fichiers binaires pour que le programme puisse les lire. 
+-	On saute Magic int pour les images ainsi que pour les labels :
+imagesReader.ReadInt32();
+labelsReader.ReadInt32();     (lecteur de label)
+Fichier, partie inutile donc on saute cette partie pour meilleur efficacité du programme + programme moins long et plus visible.
+-	Nombre d’images 
+var totalImages = imagesReader.ReadInt32();
+totalImages = ReverseBytes(totalImages);
+Conformément au format du fichier MNIST idx, l’entier dans cette position indique le nombre total d’images contenues dans le fichier et qui seront lues par la suite.
+-	On saute le nombre de lignes
+imagesReader.ReadInt32();
+       + On saute le nombre de colonnes
+imagesReader.ReadInt32();
+Nous savons que les images dans ce fichier sont de taille 28x28. Nous sautons donc la lecture de cette information.
+-	On initialise le tableau des images
+images = new MnistImage[totalImages];
+-	On charge les images une à une
+for (var index = 0; index < totalImages; index++)
+            {
+                // On initialise les pixels de l'image de taille 28x28 pixels
+                var pixels = new byte[28][];
+                for (var i = 0; i < pixels.Length; i++)
+                    pixels[i] = new byte[28];
+
+                // On remplit le tableau de pixels avec les valeurs lues depuis le fichier
+                for (var i = 0; i < 28; i++) 
+                {
+                    for (int j = 0; j < 28; j++)
+                    {
+                        pixels[i][j] = imagesReader.ReadByte();
+                    }
+                }
+
+                var label = labelsReader.ReadByte(); // get the label                
+                images[index] = new MnistImage(pixels, label);
+            }
+
+-	On zoom l’image en x10 donc en 280x280
+var zoom = 10;            
+            var bitmap = new Bitmap(280, 280);
+
+-	Canvas (espace) dans lequel on va dessiner l’image
+_ Couleur du pixel :
+“var pixelColor = 255 - image.Pixels[i][j];
+
+“- image.pixels[i][j]” car on veut avoir du noir sur blanc (normalement -> 0=noir et 255=blanc mais ici c’est inversé)
+_ Nuance de gris
+var color = Color.FromArgb(pixelColor, pixelColor, pixelColor);
+
+_ On remplit un « pixel » avec sa couleur
+graphics.FillRectangle(brush, j * zoom, i * zoom, zoom, zoom);
