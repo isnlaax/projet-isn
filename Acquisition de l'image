@@ -1,13 +1,24 @@
   Caractéristiques de l'image :
+  
     -Résolution de l'image
     Résolutions disponibles : 
-        256x256, Cette résolution est trop grande pour simplement y inscrire un chiffre.
-        128x128, Cette résolution pourrait être compatible avec notre demande.
-        64x64, Cette résolution pourrait être compatible avec notre demande.
-Conclusion : Notre choix c’est porté sur...
+        112x112, Cette résolution est trop grande pour simplement y inscrire un chiffre.
+        56x56, Cette résolution pourrait être compatible avec notre demande.
+        28x28, Cette résolution pourrait être compatible avec notre demande.
+Conclusion : Notre choix c’est porté sur la résolution 28x28 pixels.
+Nous avons choisi ce format car il correspond parfaitement à notre projet.
+Les cadres de 112x112 et de 56x56 pixels sont trop grands.
+Les algorithmes d'Intelligence Artificielle et plus particulièrement les réseaux de neurones sont très gourmands en calculs.
+De plus, ce choix nous donne la possibilité d’utiliser une base d’images manuscrites déjà identifiées, à savoir la base MNIST, 
+sur laquelle nous allons nous appuyer dans notre programme.
+    
     -Quantification de l'image :
-        Nous avons décidé d’utiliser un seul bit puisque nous voulons acquérir une image faite de noir et de blanc.
+    Nous avons décidé d’utiliser 8 bits puisque nous voulons acquérir une image faite de niveaux de gris (0 blanc, 255 noir,
+    nombre entre ces deux valeurs représente un niveau de gris plus ou moins foncé).
+    
     -Codage de la couleur :
-        Nous nous sommes mis d’accord sur l’utilisation du binaire pour la couleur des pixels. Le pixel sera soit : 
-            - Noir, I (i,j) = 0 		( i et j = coordonnées du pixel)
-            - Blanc, I (i,j) = 1
+        Nous nous sommes mis d’accord sur l’utilisation de la nuance de gris pour la couleur des pixels. Le pixel sera soit : 
+            - Noir, I (i,j) = 0 
+            - Nuance de gris, I (i,j) = 0<x<255             ( i et j = coordonnées du pixel)
+            - Blanc, I (i,j) = 255
+            
