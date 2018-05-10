@@ -1,0 +1,140 @@
+using System;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+
+namespace MnistViewer
+{
+    public partial class Form1 : Form
+    {
+        // Initialisation
+        private string pixelFile = @"train-images.idx3-ubyte";
+        private string labelFile = @"train-labels.idx1-ubyte";
+        private MnistImage[] images = null;
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+               
+        // Bouton 'Image suivante'
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (images == null)
+            {
+                LoadImages();
+            }
+
+            var imageIndex = int.Parse(textBox1.Text);
+            var image = images[imageIndex];
+            
+            var bitMap = GetImageBitmap(image);
+            pictureBox1.Image = bitMap;            
+            
+            textBox1.Text = (imageIndex + 1).ToString(); // ++next index
+
+            listBox1.Items.Add("Index = " + imageIndex + " Label = " + image._label);
+        }
+
+        public void LoadImages()
+        {   
+
+            var imagesFileStream = File.OpenRead(pixelFile);
+            var labelsFileStream = File.OpenRead(labelFile);
+
+            // fichier binaire
+            var imagesReader = new BinaryReader(imagesFileStream);
+            var labelsReader = new BinaryReader(labelsFileStream);
+
+
+            // On saute Magic int 
+            imagesReader.ReadInt32(); // Attention : Big Endian (?)
+            
+            // Nombre d'images (?)
+            var totalImages = imagesReader.ReadInt32();
+            totalImages = ReverseBytes(totalImages);
+
+            // On saute le nombre de lignes (?)
+            imagesReader.ReadInt32();
+            // On saute le nombre de colonnes (?)
+            imagesReader.ReadInt32();            
+
+
+            // On positionne également le lecteur des labels
+            // On saute Magic int 
+            labelsReader.ReadInt32();
+            // On saute le nombre de labels (devrait être le même que les images) (?)
+            labelsReader.ReadInt32();            
+            
+
+            // On initialise le tableau des images
+            images = new MnistImage[totalImages];
+                       
+            // On charge les images une à une
+            for (var index = 0; index < totalImages; index++)
+            {
+                // On initialise les pixels de l'image de taille 28x28 pixels
+                var pixels = new byte[28][];
+                for (var i = 0; i < pixels.Length; i++)
+                    pixels[i] = new byte[28];
+
+                // On remplit le tableau de pixels avec les valeurs lues depuis le fichier
+                for (var i = 0; i < 28; i++) 
+                {
+                    for (int j = 0; j < 28; j++)
+                    {
+                        pixels[i][j] = imagesReader.ReadByte();
+                    }
+                }
+
+                var label = labelsReader.ReadByte(); // get the label                
+                images[index] = new MnistImage(pixels, label);
+            }
+
+            imagesFileStream.Close();
+            imagesReader.Close();
+
+            labelsFileStream.Close();
+            labelsReader.Close();            
+        }
+
+        public static int ReverseBytes(int v)
+        {
+            byte[] intAsBytes = BitConverter.GetBytes(v);
+            Array.Reverse(intAsBytes);                              // (?)
+            return BitConverter.ToInt32(intAsBytes, 0);
+        }
+
+        public static Bitmap GetImageBitmap(MnistImage image)
+        {
+            // On zoom l'image x 10 => 280x280
+            var zoom = 10;            
+            var bitmap = new Bitmap(280, 280);
+
+            // Canvas dans lequel on va dessiner l'image
+            var graphics = Graphics.FromImage(bitmap);
+            for (var i = 0; i < 28; i++)
+            {
+                for (var j = 0; j < 28; j++)
+                {
+                    var pixelColor = 255 - image.Pixels[i][j];                                                               
+                    var color = Color.FromArgb(pixelColor, pixelColor, pixelColor); // niveaux de gris
+                    var brush = new SolidBrush(color);
+                    graphics.FillRectangle(brush, j * zoom, i * zoom, zoom, zoom); // On remplit un 'pixel' avec sa couleur
+                }
+            }
+
+            return bitmap;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
