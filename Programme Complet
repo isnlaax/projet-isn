@@ -1,0 +1,246 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
+namespace DetectionChiffre
+{
+    public static class App
+    {
+        static int TailleImage = 28;
+        static int NombreImages = 5000;
+        static int TotalEchantillon = 10;
+        static string TrainPixelFile = "train-images.idx3-ubyte";
+        static string TrainLabelFile = "train-labels.idx1-ubyte";
+        static string TestPixelFile  = "t10k-images-idx3-ubyte";
+        static string TestLabelFile  = "t10k-labels-idx1-ubyte";
+
+
+        static void Main(string[] args)
+        {
+            var nombreImagesTraining = NombreImages;
+            var positionImageTest = 0;
+
+            int.TryParse(args[0], out nombreImagesTraining);
+            int.TryParse(args[1], out TotalEchantillon);
+            int.TryParse(args[2], out positionImageTest);
+
+            var imagesLabels = LireImagesLabels(nombreImagesTraining);
+
+
+            for (int i = 0; i < 100; i++)
+            {
+                var image = LireImage(positionImageTest + i);
+
+                Console.WriteLine("Identification du chiffre " + image.Label);
+                Console.WriteLine();
+                IdentifierChiffre(image, imagesLabels);
+                Console.WriteLine();
+                Console.WriteLine("------------------------------");
+            }
+            
+
+            //Console.WriteLine(chiffre);
+
+        }
+
+        private static void IdentifierChiffre(Image image, List<Image> imagesLabels)
+        {
+            // Calcul de la distance entre les images
+            var distances = new List<KeyValuePair<int, int>>();
+
+            for (int i = 0; i < imagesLabels.Count; i++)
+            {
+                var imageLabel = imagesLabels[i];
+                distances.Add(new KeyValuePair<int, int>(i, CalculDistance(image, imageLabel)));
+            }
+
+            // Trier les distances
+            var distancesTriees = distances.OrderBy(x => x.Value).Select(x => x.Key).ToList<int>();
+
+            // On selectionne les n labels les plus frequents
+            var dictionanireLabels = new Dictionary<int, int>();
+
+            for (int i = 0; i < TotalEchantillon; i++)
+            {
+                var index = distancesTriees[i];
+                var label = imagesLabels[index].Label;
+
+                if (dictionanireLabels.ContainsKey(label))
+                {
+                    dictionanireLabels[label] += 1;
+                }
+                else
+                {
+                    dictionanireLabels.Add(label, 1);
+                }
+            }
+
+            var labelsTries = dictionanireLabels.OrderByDescending(x => x.Value);
+
+            foreach (var label in labelsTries)
+            {
+                Console.WriteLine(" Chiffre : " + label.Key + " - " + label.Value + " fois");
+            }
+        }
+
+
+        /// <summary>
+        /// Calcul de la distance euclidienne.
+        /// </summary>
+        /// <param name="imageA">Image a.</param>
+        /// <param name="imageB">Image b.</param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        private static int CalculDistance(Image imageA, Image imageB)
+        {
+
+            var distance = 0;
+
+            for (int i = 0; i < TailleImage; i++)
+            {
+                for (int j = 0; j < TailleImage; j++)
+                {
+                    distance += (imageB.Pixels[i, j] - imageA.Pixels[i, j]) * (imageB.Pixels[i, j] - imageA.Pixels[i, j]);
+                }
+            }
+
+            return distance;
+
+        }
+
+        private static Image LireImage(int position)
+        {
+            var imagesFileStream = File.OpenRead(TestPixelFile);
+            var labelsFileStream = File.OpenRead(TestLabelFile);
+
+            // fichier binaire
+            var imagesReader = new BinaryReader(imagesFileStream);
+            var labelsReader = new BinaryReader(labelsFileStream);
+            // On saute Magic int 
+            imagesReader.ReadInt32(); // Attention : Big Endian
+
+            // Nombre d'images
+            var totalImages = imagesReader.ReadInt32();
+            totalImages = ReverseBytes(totalImages);
+
+            // On saute le nombre de lignes
+            imagesReader.ReadInt32();
+            // On saute le nombre de colonnes
+            imagesReader.ReadInt32();
+
+
+            // On positionne également le lecteur des labels
+            // On saute Magic int 
+            labelsReader.ReadInt32();
+            // On saute le nombre de labels (devrait être le même que les images)
+            labelsReader.ReadInt32();
+
+            Image image = null;
+
+            // On charge les images une à une
+            for (var index = 0; index < totalImages; index++)
+            {
+                // On initialise les pixels de l'image de taille 28x28 pixels
+                var pixels = new byte[28, 28];
+
+                // On remplit le tableau de pixels avec les valeurs lues depuis le fichier
+                for (var i = 0; i < 28; i++)
+                {
+                    for (int j = 0; j < 28; j++)
+                    {
+                        pixels[i, j] = imagesReader.ReadByte();
+                    }
+                }
+
+                var label = labelsReader.ReadByte(); // get the label 
+                
+                if (index == position)
+                {
+                    image = new Image(pixels, label);
+                    break;
+                }
+            }
+
+            imagesFileStream.Close();
+            imagesReader.Close();
+
+            labelsFileStream.Close();
+            labelsReader.Close();
+
+            return image;
+        }
+
+        private static List<Image> LireImagesLabels(int total)
+        {
+            var imagesFileStream = File.OpenRead(TrainPixelFile);
+            var labelsFileStream = File.OpenRead(TrainLabelFile);
+
+            // fichier binaire
+            var imagesReader = new BinaryReader(imagesFileStream);
+            var labelsReader = new BinaryReader(labelsFileStream);
+
+
+            // On saute Magic int 
+            imagesReader.ReadInt32(); // Attention : Big Endian
+
+            // Nombre d'images
+            var totalImages = imagesReader.ReadInt32();
+            totalImages = ReverseBytes(totalImages);
+            if (total < totalImages)
+            {
+                totalImages = total;
+            }
+
+            // On saute le nombre de lignes
+            imagesReader.ReadInt32();
+            // On saute le nombre de colonnes
+            imagesReader.ReadInt32();
+
+
+            // On positionne également le lecteur des labels
+            // On saute Magic int 
+            labelsReader.ReadInt32();
+            // On saute le nombre de labels (devrait être le même que les images)
+            labelsReader.ReadInt32();
+
+
+            // On initialise le tableau des images
+            var images = new List<Image>();
+
+            // On charge les images une à une
+            for (var index = 0; index < totalImages; index++)
+            {
+                // On initialise les pixels de l'image de taille 28x28 pixels
+                var pixels = new byte[28, 28];
+
+                // On remplit le tableau de pixels avec les valeurs lues depuis le fichier
+                for (var i = 0; i < 28; i++)
+                {
+                    for (int j = 0; j < 28; j++)
+                    {
+                        pixels[i, j] = imagesReader.ReadByte();
+                    }
+                }
+
+                var label = labelsReader.ReadByte(); // get the label                
+                images.Add(new Image(pixels, label));
+            }
+
+            imagesFileStream.Close();
+            imagesReader.Close();
+
+            labelsFileStream.Close();
+            labelsReader.Close();
+
+            return images;
+        }
+
+        public static int ReverseBytes(int v)
+        {
+            byte[] intAsBytes = BitConverter.GetBytes(v);
+            Array.Reverse(intAsBytes);
+            return BitConverter.ToInt32(intAsBytes, 0);
+        }
+    }
+}
